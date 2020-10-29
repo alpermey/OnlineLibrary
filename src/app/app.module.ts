@@ -13,7 +13,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [  
-  { path: '', component: HomepageComponent}
+  { path: '', component: HomepageComponent},
+  { path: 'about', component: AboutpageComponent}
 ];
 
 @NgModule({

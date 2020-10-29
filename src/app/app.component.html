@@ -1,2 +1,18 @@
-<router-outlet>
-</router-outlet>
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>house</mat-icon>
+    <span>Home page</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>library_books</mat-icon>
+    <span>Books</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>supervised_user_circle</mat-icon>
+    <span>About us</span>
+  </button>
+</mat-menu>
+<router-outlet></router-outlet>

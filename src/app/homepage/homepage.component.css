@@ -4,7 +4,7 @@ body{
     min-width: 98%;
     background-repeat: no-repeat;
     background-size: cover;
-
+    padding-top: 250px;
   }
 
   h1,form{

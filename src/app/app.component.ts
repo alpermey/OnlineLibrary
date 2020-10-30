@@ -10,11 +10,11 @@ export class AppComponent {
   constructor(private router: Router) { }
   title = 'onlinelibrary';
 
-  btnClickHome= function () {
+  btnClickHome = function(): void {
     this.router.navigateByUrl('');
 };
 
-btnClickAbout= function () {
+btnClickAbout = function(): void {
   this.router.navigateByUrl('about');
 };
 

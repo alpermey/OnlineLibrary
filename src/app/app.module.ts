@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutpageComponent } from './aboutpage/aboutpage.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FormsModule } from '@angular/forms';
 
-const routes: Routes = [  
+const routes: Routes = [
   { path: '', component: HomepageComponent},
   { path: 'about', component: AboutpageComponent}
 ];
@@ -26,7 +26,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatMenuModule, MatButtonModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
     AppRoutingModule,
     MatIconModule,
     FormsModule

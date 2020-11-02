@@ -18,4 +18,8 @@ btnClickAbout = function(): void {
   this.router.navigateByUrl('about');
 };
 
+btnClickBooks = function(): void {
+  this.router.navigateByUrl('books');
+}
+
 }

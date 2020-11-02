@@ -11,17 +11,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FormsModule } from '@angular/forms';
+import { BookspageComponent } from './bookspage/bookspage.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
-  { path: 'about', component: AboutpageComponent}
+  { path: 'about', component: AboutpageComponent},
+  { path: 'books', component: BookspageComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutpageComponent,
-    HomepageComponent
+    HomepageComponent,
+    BookspageComponent
   ],
   imports: [
     BrowserModule,

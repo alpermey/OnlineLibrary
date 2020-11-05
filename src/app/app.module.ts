@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { BookspageComponent } from './bookspage/bookspage.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './bookspage/dialog/dialog.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -26,7 +28,8 @@ const routes: Routes = [
     AppComponent,
     AboutpageComponent,
     HomepageComponent,
-    BookspageComponent
+    BookspageComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ const routes: Routes = [
     MatIconModule,
     FormsModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

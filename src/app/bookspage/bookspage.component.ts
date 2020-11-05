@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Book } from 'src/book.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-bookspage',
@@ -13,7 +15,7 @@ export class BookspageComponent implements OnInit {
   nameOfBooks: string[];
   books: Book[] = [];
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {}
   
@@ -24,11 +26,17 @@ export class BookspageComponent implements OnInit {
 ]
 
   choose(id: number) {
-    if(this.b[id].amount != 0){
+    if(this.b[id].amount > 0){
       console.log(this.b[id].amount);
       this.b[id].amount= this.b[id].amount - 1;
       console.log(this.b[id].amount);
-    } 
+    } else {
+      this.openDialog();
+    }
+  }
+
+  openDialog() {
+    this.dialog.open(DialogComponent);
   }
 
 }

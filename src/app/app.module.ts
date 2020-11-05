@@ -12,6 +12,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FormsModule } from '@angular/forms';
 import { BookspageComponent } from './bookspage/bookspage.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -34,7 +36,9 @@ const routes: Routes = [
     MatIconModule,
     AppRoutingModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

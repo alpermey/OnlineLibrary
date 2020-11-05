@@ -1,1 +1,9 @@
-<p>bookspage works!</p>
+<mat-selection-list #books>
+    <mat-list-option (click)="choose(book.id)" *ngFor="let book of b; let i = id;" [value]="book"> 
+      {{book.name}}, {{book.amount}}
+    </mat-list-option>
+  </mat-selection-list>
+  
+  <p>
+    Books selected: {{books.selectedOptions.selected.length}}
+  </p>

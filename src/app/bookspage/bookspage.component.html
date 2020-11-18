@@ -1,0 +1,8 @@
+<mat-selection-list #books [multiple]="false">
+    <mat-list-option (click)="choose(book.id)" *ngFor="let book of b;" [value]="book"
+    (contextmenu)="onRightClick(book.id)" > 
+      {{book.name}} | {{book.author}} | {{book.amount}}
+    </mat-list-option>
+  </mat-selection-list>
+  
+  

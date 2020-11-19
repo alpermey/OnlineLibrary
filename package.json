@@ -9,7 +9,7 @@
     "tc-test": "ng test --single-run --reporters=teamcity",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "stylint": "npx stylelint src/**/*.css",
+    "stylint": "npx stylelint '/**/.css' -s",
     "eslint": "npx ng lint"
   },
   "private": true,

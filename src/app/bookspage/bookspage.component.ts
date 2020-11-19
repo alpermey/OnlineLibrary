@@ -12,12 +12,16 @@ import {cloneDeep} from 'lodash';
 
 export class BookspageComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    // empty
+   }
   public dialog: MatDialog;
   b: Book[] = [{name: 'War and Peace', author: 'Tolstoy', amount: 5, id: 0 },
   {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1 }];
   clonedArray = cloneDeep(this.b);
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // empty
+  }
 
   onRightClick(id: number): boolean {
     const sum = this.clonedArray[id].amount;

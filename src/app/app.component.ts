@@ -20,6 +20,6 @@ btnClickAbout = function(): void {
 
 btnClickBooks = function(): void {
   this.router.navigateByUrl('books');
-}
+};
 
 }

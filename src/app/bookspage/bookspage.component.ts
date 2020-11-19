@@ -13,34 +13,31 @@ import {cloneDeep} from 'lodash';
 export class BookspageComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
-
+  b: Book[] = [{name: 'War and Peace', author: 'Tolstoy', amount: 5, id: 0 },
+  {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1 }];
+  clonedArray = cloneDeep(this.b);
   ngOnInit(): void {}
-  
-  b: Book[] = [{name:'War and Peace',author:'Tolstoy',amount:5,id:0},
-  {name:'Crime and Punishment',author:'Dostoevsky',amount:3,id:1}]
 
-  clonedArray = cloneDeep(this.b);; 
-
-  onRightClick(id: number){
+  onRightClick(id: number): boolean {
     const sum = this.clonedArray[id].amount;
     console.log(sum);
-    if(sum != this.b[id].amount){
-      this.b[id].amount= this.b[id].amount + 1;
+    if (sum !== this.b[id].amount){
+      this.b[id].amount = this.b[id].amount + 1;
     }
     return false;
   }
 
-  choose(id: number) {
-    if(this.b[id].amount > 0){
+  choose(id: number): void {
+    if (this.b[id].amount > 0){
       console.log(this.b[id].amount);
-      this.b[id].amount= this.b[id].amount - 1;
+      this.b[id].amount = this.b[id].amount - 1;
       console.log(this.b[id].amount);
     } else {
       this.openDialog();
     }
   }
 
-  openDialog() {
+  openDialog(): void {
     this.dialog.open(DialogComponent);
   }
 

@@ -4,5 +4,3 @@ export interface Book {
     amount: number;
     id: number;
   }
-  
-  

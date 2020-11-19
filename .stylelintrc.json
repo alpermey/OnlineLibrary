@@ -1,0 +1,9 @@
+{
+    "rules": {
+        "block-no-empty": true,
+        "font-family-no-duplicate-names": true,
+        "color-no-invalid-hex": true,
+        "no-extra-semicolons": true,
+        "no-empty-source": true
+    }
+}

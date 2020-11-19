@@ -42,8 +42,9 @@ const routes: Routes = [
     FormsModule,
     MatGridListModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
   ],
+  entryComponents: [DialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

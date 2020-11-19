@@ -12,7 +12,8 @@ import {cloneDeep} from 'lodash';
 
 export class BookspageComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor() { }
+  public dialog: MatDialog;
   b: Book[] = [{name: 'War and Peace', author: 'Tolstoy', amount: 5, id: 0 },
   {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1 }];
   clonedArray = cloneDeep(this.b);

@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Book } from 'src/book.component';
 import { DialogComponent } from './dialog/dialog.component';
 import {cloneDeep} from 'lodash';
+import { DialogemailComponent } from './dialogemail/dialogemail.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-bookspage',
@@ -12,10 +14,10 @@ import {cloneDeep} from 'lodash';
 
 export class BookspageComponent implements OnInit {
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     // empty
    }
-  public dialog: MatDialog;
+   
   b: Book[] = [{name: 'War and Peace', author: 'Tolstoy', amount: 5, id: 0 },
   {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1 }];
   clonedArray = cloneDeep(this.b);
@@ -44,6 +46,10 @@ export class BookspageComponent implements OnInit {
 
   openDialog(): void {
     this.dialog.open(DialogComponent);
+  }
+
+  openEmailDialog(): void {
+    this.dialog.open(DialogemailComponent);
   }
 
 }

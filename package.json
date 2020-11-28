@@ -24,8 +24,10 @@
     "@angular/platform-browser": "~10.1.6",
     "@angular/platform-browser-dynamic": "~10.1.6",
     "@angular/router": "~10.1.6",
+    "express": "^4.17.1",
     "lodash": "^4.17.20",
-    "nodemailer": "^6.4.15",
+    "nodemailer": "^6.4.16",
+    "nodemailer-mailgun-transport": "^2.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

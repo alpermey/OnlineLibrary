@@ -5,6 +5,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import {cloneDeep} from 'lodash';
 import { DialogemailComponent } from './dialogemail/dialogemail.component';
 import { FormControl } from '@angular/forms';
+import { DataService } from 'src/service/data.service';
 
 @Component({
   selector: 'app-bookspage',
@@ -14,44 +15,30 @@ import { FormControl } from '@angular/forms';
 
 export class BookspageComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, public bookService: DataService) {
     // empty
    }
    
-  b: Book[] = [{name: 'War and Peace', author: 'Tolstoy', amount: 5, id: 0, chosenNumber: 0 },
-  {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1, chosenNumber: 0 }];
-  clonedArray = cloneDeep(this.b);
   ngOnInit(): void {
     // empty
   }
+  
+  b = this.bookService.b;
 
-  onRightClick(id: number): boolean {
-    const sum = this.clonedArray[id].amount;
-    console.log(sum);
-    if (sum !== this.b[id].amount){
-      this.b[id].amount = this.b[id].amount + 1;
-      this.b[id].chosenNumber = this.b[id].chosenNumber - 1;
-    }
-    return false;
+  onRightClick(id:number): void {
+    this.bookService.onRightClick(id);
   }
 
-  choose(id: number): void {
-    if (this.b[id].amount > 0){
-      console.log(this.b[id].amount);
-      this.b[id].amount = this.b[id].amount - 1;
-      this.b[id].chosenNumber = this.b[id].chosenNumber + 1;
-      console.log(this.b[id].amount);
-    } else {
-      this.openDialog();
-    }
+  choose(id:number): void {
+    this.bookService.choose(id);
   }
 
   openDialog(): void {
-    this.dialog.open(DialogComponent);
+    this.bookService.openDialog();
   }
 
   openEmailDialog(): void {
-    this.dialog.open(DialogemailComponent);
+    this.bookService.openEmailDialog();
   }
 
 }

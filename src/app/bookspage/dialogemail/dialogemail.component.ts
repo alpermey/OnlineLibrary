@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Book } from 'src/book.component';
 import { HttpService } from 'src/service/http.service';
 
 
@@ -18,6 +19,8 @@ export class DialogemailComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.http.test);
   }
+
+  choice: Book[]=[]
 
   emailFormControl = new FormControl("", []);
     

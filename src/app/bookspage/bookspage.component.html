@@ -4,7 +4,13 @@
       {{book.name}} | {{book.author}} | {{book.amount}}
     </mat-list-option>
   </mat-selection-list>
-  
-  <div class="example-button-row">
-    <button mat-flat-button color="primary" (click)="openEmailDialog()">Get Books</button>
+ 
+<div *ngFor="let book of b">
+  <div *ngIf="book.chosenNumber">
+    {{book.name}} | {{book.chosenNumber}}
   </div>
+</div>
+
+<div class="example-button-row">
+  <button mat-flat-button color="primary" (click)="openEmailDialog()">Get Books</button>
+</div>

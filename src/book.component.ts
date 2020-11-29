@@ -3,4 +3,5 @@ export interface Book {
     author: string;
     amount: number;
     id: number;
+    chosenNumber: number;
   }

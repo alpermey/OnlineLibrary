@@ -18,8 +18,8 @@ export class BookspageComponent implements OnInit {
     // empty
    }
    
-  b: Book[] = [{name: 'War and Peace', author: 'Tolstoy', amount: 5, id: 0 },
-  {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1 }];
+  b: Book[] = [{name: 'War and Peace', author: 'Tolstoy', amount: 5, id: 0, chosenNumber: 0 },
+  {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1, chosenNumber: 0 }];
   clonedArray = cloneDeep(this.b);
   ngOnInit(): void {
     // empty
@@ -30,6 +30,7 @@ export class BookspageComponent implements OnInit {
     console.log(sum);
     if (sum !== this.b[id].amount){
       this.b[id].amount = this.b[id].amount + 1;
+      this.b[id].chosenNumber = this.b[id].chosenNumber - 1;
     }
     return false;
   }
@@ -38,6 +39,7 @@ export class BookspageComponent implements OnInit {
     if (this.b[id].amount > 0){
       console.log(this.b[id].amount);
       this.b[id].amount = this.b[id].amount - 1;
+      this.b[id].chosenNumber = this.b[id].chosenNumber + 1;
       console.log(this.b[id].amount);
     } else {
       this.openDialog();

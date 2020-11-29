@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpService } from 'src/service/http.service';
@@ -36,7 +35,7 @@ export class DialogemailComponent implements OnInit {
     // eslint-disable-next-line prefer-const
     let res:any = data; 
     console.log(
-    `${user.name} confirmation has been sent to your email and the message id is ${res.messageId}`
+    `${user.name}, confirmation has been sent to your email and the message id is ${res.messageId}`
     );
     },
     err => {

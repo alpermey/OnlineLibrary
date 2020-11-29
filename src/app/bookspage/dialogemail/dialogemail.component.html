@@ -1,3 +1,14 @@
-<input matInput placeholder="Name" [formControl]="nameFormControl" />
-<input matInput placeholder="Email" [formControl]="emailFormControl"/>
-<button mat-raised-button color="primary" (click)="getBooks()">Send</button>
+<div>
+    <input matInput placeholder="Name" [formControl]="nameFormControl" />
+    <input matInput placeholder="Email" [formControl]="emailFormControl"/>
+    <button mat-raised-button color="primary" (click)="getBooks()">Send</button>
+</div>
+
+<div>
+You have chosen:
+    <div *ngFor="let book of choice">
+        <div *ngIf="book.chosenNumber">
+            {{book.name}} | {{book.chosenNumber}}
+        </div>
+    </div>
+</div>

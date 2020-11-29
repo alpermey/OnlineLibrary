@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Book } from 'src/book.component';
+import { DataService } from 'src/service/data.service';
 import { HttpService } from 'src/service/http.service';
 
 
@@ -12,7 +13,7 @@ import { HttpService } from 'src/service/http.service';
 })
 export class DialogemailComponent implements OnInit {
 
-  constructor(public http: HttpService) { 
+  constructor(public http: HttpService,public bookService: DataService) { 
     // empty
   }
 
@@ -20,13 +21,11 @@ export class DialogemailComponent implements OnInit {
     console.log(this.http.test);
   }
 
-  choice: Book[]=[]
+  choice = this.bookService.b;
 
   emailFormControl = new FormControl("", []);
     
   nameFormControl = new FormControl("", []);
-
-  registerUserData = {}
 
   getBooks(): void {
     const user = {

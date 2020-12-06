@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 
-app.listen(3000, () => {
+app.listen(3000, "0.0.0.0", () => {
   console.log("The server started on port 3000 !!!!!!");
 });
 

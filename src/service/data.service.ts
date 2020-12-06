@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 import { HttpService } from './http.service';
 import { DialogmessageComponent } from 'src/app/bookspage/dialogmessage/dialogmessage.component';
 import { DialogerrorComponent } from 'src/app/bookspage/dialogerror/dialogerror.component';
+import { DialogreturnComponent } from 'src/app/bookspage/dialogreturn/dialogreturn.component';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class DataService {
     if(user.email){
       this.dialog.open(DialogmessageComponent);
     }
-    this.http.sendEmail("http://localhost:3000/sendmail", user).subscribe(
+    this.http.sendEmail("http://34.65.62.119:3000/sendmail", user).subscribe(
     data => {
     // eslint-disable-next-line prefer-const
     let res:any = data; 
@@ -106,6 +107,10 @@ export class DataService {
 
   openEmailDialog(): void {
     this.dialog.open(DialogemailComponent);
+  }
+
+  openReturnDialog(): void {
+    this.dialog.open(DialogreturnComponent);
   }
 
 }

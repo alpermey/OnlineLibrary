@@ -24,6 +24,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DialogmessageComponent } from './bookspage/dialogmessage/dialogmessage.component';
 import { DialogerrorComponent } from './bookspage/dialogerror/dialogerror.component';
+import { DialogreturnComponent } from './bookspage/dialogreturn/dialogreturn.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -40,7 +41,8 @@ const routes: Routes = [
     DialogComponent,
     DialogemailComponent,
     DialogmessageComponent,
-    DialogerrorComponent
+    DialogerrorComponent,
+    DialogreturnComponent
   ],
   imports: [
     BrowserModule,

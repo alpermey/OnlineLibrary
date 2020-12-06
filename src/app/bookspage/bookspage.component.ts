@@ -37,6 +37,10 @@ export class BookspageComponent implements OnInit {
     this.bookService.openEmailDialog();
   }
 
+  openReturnDialog(): void {
+    this.bookService.openReturnDialog();
+  }
+
   wasChosen(): boolean {
     return this.bookService.wasChosen();
   }

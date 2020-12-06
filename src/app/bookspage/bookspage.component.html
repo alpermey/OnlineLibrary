@@ -12,5 +12,5 @@
 </div>
 
 <div class="example-button-row">
-  <button mat-flat-button color="primary" (click)="openEmailDialog()">Get Books</button>
+  <button mat-flat-button color="primary" (click)="openEmailDialog()" [disabled]="!wasChosen()">Get Books</button>
 </div>

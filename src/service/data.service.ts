@@ -7,6 +7,8 @@ import { DialogComponent } from 'src/app/bookspage/dialog/dialog.component';
 import { DialogemailComponent } from 'src/app/bookspage/dialogemail/dialogemail.component';
 import { FormControl } from '@angular/forms';
 import { HttpService } from './http.service';
+import { DialogmessageComponent } from 'src/app/bookspage/dialogmessage/dialogmessage.component';
+import { DialogerrorComponent } from 'src/app/bookspage/dialogerror/dialogerror.component';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,9 @@ export class DataService {
     name: this.nameFormControl.value,
     email: this.emailFormControl.value
     }
+    if(user.email){
+      this.dialog.open(DialogmessageComponent);
+    }
     this.http.sendEmail("http://localhost:3000/sendmail", user).subscribe(
     data => {
     // eslint-disable-next-line prefer-const
@@ -38,12 +43,31 @@ export class DataService {
     console.log(
     `${user.name}, confirmation has been sent to your email and the message id is ${res.messageId}`
     );
+    this.clearChosenBooks();
+    this.clonedArray = cloneDeep(this.b);
+    this.dialog.closeAll();
     },
     err => {
     console.log(err);
+    this.dialog.open(DialogerrorComponent);
     }
     );
-    this.dialog.closeAll();
+  }
+
+  wasChosen(): boolean{
+    for (let x = 0; x < this.b.length; x++){
+      if(this.b[x].chosenNumber > 0){
+       return true;
+      }
+    }
+  }
+
+  clearChosenBooks(): void {
+    for (let x = 0; x < this.b.length; x++){
+      if(this.b[x].chosenNumber > 0){
+       this.b[x].chosenNumber = 0;
+      }
+    }
   }
 
   getChosenBooks(): void {

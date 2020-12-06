@@ -20,6 +20,10 @@ import { DialogemailComponent } from './bookspage/dialogemail/dialogemail.compon
 import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DialogmessageComponent } from './bookspage/dialogmessage/dialogmessage.component';
+import { DialogerrorComponent } from './bookspage/dialogerror/dialogerror.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -34,7 +38,9 @@ const routes: Routes = [
     HomepageComponent,
     BookspageComponent,
     DialogComponent,
-    DialogemailComponent
+    DialogemailComponent,
+    DialogmessageComponent,
+    DialogerrorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,9 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   entryComponents: [DialogComponent],
   providers: [],

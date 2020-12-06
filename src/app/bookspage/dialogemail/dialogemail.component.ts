@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Book } from 'src/book.component';
 import { DataService } from 'src/service/data.service';
 import { HttpService } from 'src/service/http.service';
 
@@ -29,7 +27,6 @@ export class DialogemailComponent implements OnInit {
 
   getBooks(): void {
     this.bookService.getBooks();
-
   }
 
 }

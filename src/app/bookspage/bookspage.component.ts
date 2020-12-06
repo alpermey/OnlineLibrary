@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Book } from 'src/book.component';
-import { DialogComponent } from './dialog/dialog.component';
-import {cloneDeep} from 'lodash';
-import { DialogemailComponent } from './dialogemail/dialogemail.component';
-import { FormControl } from '@angular/forms';
 import { DataService } from 'src/service/data.service';
 
 @Component({
@@ -25,8 +20,9 @@ export class BookspageComponent implements OnInit {
   
   b = this.bookService.b;
 
-  onRightClick(id:number): void {
+  onRightClick(id:number): boolean {
     this.bookService.onRightClick(id);
+    return false;
   }
 
   choose(id:number): void {
@@ -39,6 +35,10 @@ export class BookspageComponent implements OnInit {
 
   openEmailDialog(): void {
     this.bookService.openEmailDialog();
+  }
+
+  wasChosen(): boolean {
+    return this.bookService.wasChosen();
   }
 
 }

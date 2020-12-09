@@ -1,6 +1,13 @@
 <div>
     <h1>Thank you for renting our books!</h1>
     <h4>Please write your email and add which books you are giving back</h4>
-    <!-- <input matInput placeholder="Email">
-    <button mat-raised-button color="primary" (click)=" ">Return</button> -->
+    <input matInput placeholder="Email" [(ngModel)]="email">
+    <button (click)="findBooks(email)">Find books</button>
 </div>
+
+<mat-selection-list #books [multiple]="false">
+    <mat-list-option (click)="add()" *ngFor="let book of b;" [value]="book"
+    (contextmenu)="delete()" > 
+      {{book.name}} | {{book.amount}}
+    </mat-list-option>
+</mat-selection-list>

@@ -6,3 +6,4 @@ if [ $c -gt 0 ]; then
 fi
   
 ng serve --host 0.0.0.0 --disableHostCheck > /tmp/deploy_frontend_$milli.log 2>&1 & read -t 60 < <(tail -f /tmp/deploy_frontend_$milli.log |  grep 'Compiled successfully')
+return 0;

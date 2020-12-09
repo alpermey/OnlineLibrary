@@ -28,9 +28,9 @@ body{
         }
         .bar1 button {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 305px;
+            width: 105px;
+            height: 105px;
+            top: 299px;
             right: 100px;
             background: #7BA7AB;
             border-radius: 0 5px 5px 0;

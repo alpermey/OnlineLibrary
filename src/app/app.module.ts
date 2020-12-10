@@ -29,7 +29,7 @@ import { DialogerrorComponent } from './bookspage/dialogerror/dialogerror.compon
 import { DialogreturnComponent } from './bookspage/dialogreturn/dialogreturn.component';
 import { DataService } from 'src/service/data.service';
 import { HttpService } from 'src/service/http.service';
-import { MatRippleModule } from '@angular/material/core/ripple';
+
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -62,23 +62,17 @@ const routes: Routes = [
     MatListModule,
     MatDialogModule,
     MatInputModule,
-    MatDialog,
-    MatDialogRef,
+    // MatDialog,
+    // MatDialogRef,
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    DialogComponent,
-    DialogemailComponent,
-    DialogerrorComponent,
-    DialogmessageComponent,
-    DialogreturnComponent,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRippleModule,
   ],
   exports: [
     MatButtonModule,
@@ -94,7 +88,6 @@ const routes: Routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRippleModule,
 ],
   entryComponents: [DialogComponent, DialogemailComponent, DialogerrorComponent, DialogmessageComponent, DialogreturnComponent],
   providers: [DataService, HttpService, HttpClientModule, MatDialog, HttpClientModule,

@@ -10,22 +10,22 @@ import { DataService } from 'src/service/data.service';
 
 export class BookspageComponent implements OnInit {
 
+  b = this.bookService.b;
+
   constructor(public dialog: MatDialog, public bookService: DataService) {
     // empty
    }
-   
+
   ngOnInit(): void {
     // empty
   }
-  
-  b = this.bookService.b;
 
-  onRightClick(id:number): boolean {
+  onRightClick(id: number): boolean {
     this.bookService.onRightClick(id);
     return false;
   }
 
-  choose(id:number): void {
+  choose(id: number): void {
     this.bookService.choose(id);
   }
 

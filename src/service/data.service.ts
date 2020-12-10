@@ -1,3 +1,4 @@
+/* tslint:disable:prefer-for-of */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
@@ -13,7 +14,7 @@ import { DialogerrorComponent } from 'src/app/bookspage/dialogerror/dialogerror.
 import { DialogreturnComponent } from 'src/app/bookspage/dialogreturn/dialogreturn.component';
 
 @Injectable({
-  providedIn: 'root' 
+  providedIn: 'root'
 })
 export class DataService {
 
@@ -21,28 +22,28 @@ export class DataService {
   {name: 'Crime and Punishment', author: 'Dostoevsky', amount: 3, id: 1, chosenNumber: 0 }];
   clonedArray = cloneDeep(this.b);
   amountOfusers = 0;
-  public c:Book[] = [];
+  public c: Book[] = [];
 
-  constructor(public dialog: MatDialog,public http: HttpService) { 
-    //empty
+  constructor(public dialog: MatDialog, public http: HttpService) {
+    // empty
   }
 
-  MyArrayType:Array<{email: string, book: string, amount: number,id:number}> = [];
+  MyArrayType: Array<{email: string, book: string, amount: number, id: number}> = [];
 
-  public emailFormControl = new FormControl("", []);
-    
-  public nameFormControl = new FormControl("", []);
+  public emailFormControl = new FormControl('', []);
 
-  giveBooks(arr:Array<{book: string;amount: number;id: number;}>, email:string):void {
-    for(let i = 0; i < arr.length;i++){
+  public nameFormControl = new FormControl('', []);
+
+  giveBooks(arr: Array<{book: string; amount: number; id: number; }>, email: string): void {
+    for ( let i = 0; i < arr.length; i++){
       const name = arr[i].book;
-      const number = arr[i].amount;
+      const numberA = arr[i].amount;
       for (let index = 0; index < this.MyArrayType.length; index++) {
-        if(email === this.MyArrayType[index].email){
-          if(name === this.MyArrayType[index].book){
-            this.MyArrayType[index].amount = number;
-            if(number === 0){
-              this.MyArrayType.splice(index,1,{email:"deleted",book:"",amount:0,id:-1});
+        if ( email === this.MyArrayType[index].email){
+          if ( name === this.MyArrayType[index].book){
+            this.MyArrayType[index].amount = numberA;
+            if ( numberA === 0){
+              this.MyArrayType.splice(index, 1, {email: 'deleted', book: '', amount: 0, id: -1});
             }
           }
         }
@@ -51,47 +52,47 @@ export class DataService {
     this.dialog.closeAll();
   }
 
-  createUser(email:string): void {
-    for(let i = 0; i < this.c.length;i++){
+  createUser(email: string): void {
+    for ( let i = 0; i < this.c.length; i++){
       this.MyArrayType.push({
-        email: email,
-        book:this.c[i].name,
-        amount:this.calculate(this.getSortBookName(this.c[i].name)),
-        id:this.c[i].id
-      })
+        email,
+        book: this.c[i].name,
+        amount: this.calculate(this.getSortBookName(this.c[i].name)),
+        id: this.c[i].id
+      });
     }
     this.amountOfusers++;
     console.log(this.amountOfusers);
   }
 
-  getSortBookName(nameofBook:string):Array<{name: string;author: string;amount: number;id: number;chosenNumber: number;}>
+  getSortBookName( nameofBook: string ): Array<{name: string; author: string; amount: number; id: number; chosenNumber: number; }>
   {
     return this.c.filter(obj => {
       return obj.name === nameofBook;
-    })
+    });
   }
 
-  calculate(arr:Array<{name: string;author: string;amount: number;id: number;chosenNumber: number;}>): number {
+  calculate( arr: Array<{name: string; author: string; amount: number; id: number; chosenNumber: number; }>): number {
     let num = 0;
-    for (let index = 0; index < arr.length; index++) {
-      num=num+arr[index].chosenNumber;
+    for ( let index = 0; index < arr.length; index++) {
+      num = num + arr[index].chosenNumber;
     }
     return num;
   }
 
 
-  findBooks(email:string): Array<{book:string,amount:number,id:number}> {
-    const foundBooks:Array<{book:string,amount:number,id:number}> = [];
+  findBooks( email: string ): Array<{book: string, amount: number, id: number}> {
+    const foundBooks: Array<{book: string, amount: number, id: number}> = [];
     const resultArray = this.MyArrayType.filter(obj => {
       return obj.email === email;
-    })
+    });
 
-    for (let index = 0; index < resultArray.length; index++) {
+    for ( let index = 0; index < resultArray.length; index++) {
       foundBooks.push({
-        book:resultArray[index].book,
-        amount:resultArray[index].amount,
-        id:resultArray[index].id
-      })
+        book: resultArray[index].book,
+        amount: resultArray[index].amount,
+        id: resultArray[index].id
+      });
     }
     return foundBooks;
   }
@@ -100,14 +101,14 @@ export class DataService {
     const user = {
     name: this.nameFormControl.value,
     email: this.emailFormControl.value
-    }
-    if(user.email){
+    };
+    if (user.email){
       this.dialog.open(DialogmessageComponent);
     }
-    this.http.sendEmail("http://34.65.62.119:3000/sendmail", user).subscribe(
+    this.http.sendEmail('http://34.65.62.119:3000/sendmail', user).subscribe(
     data => {
     // eslint-disable-next-line prefer-const
-    let res:any = data; 
+    const res: any = data;
     console.log(
     `${user.name}, confirmation has been sent to your email and the message id is ${res.messageId}`
     );
@@ -125,7 +126,7 @@ export class DataService {
 
   wasChosen(): boolean{
     for (let x = 0; x < this.b.length; x++){
-      if(this.b[x].chosenNumber > 0){
+      if (this.b[x].chosenNumber > 0){
        return true;
       }
     }
@@ -133,7 +134,7 @@ export class DataService {
 
   clearChosenBooks(): void {
     for (let x = 0; x < this.b.length; x++){
-      if(this.b[x].chosenNumber > 0){
+      if (this.b[x].chosenNumber > 0){
        this.b[x].chosenNumber = 0;
        this.c.pop();
       }
@@ -142,7 +143,7 @@ export class DataService {
 
   getChosenBooks(): void {
     for (let x = 0; x < this.b.length; x++){
-      if(this.b[x].chosenNumber > 0){
+      if (this.b[x].chosenNumber > 0){
        this.c.push(this.b[x]);
       }
     }

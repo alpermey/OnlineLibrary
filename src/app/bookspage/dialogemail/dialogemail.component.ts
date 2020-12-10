@@ -11,19 +11,19 @@ import { HttpService } from 'src/service/http.service';
 })
 export class DialogemailComponent implements OnInit {
 
-  constructor(public http: HttpService,public bookService: DataService) { 
-    // empty
-  }
-
-  ngOnInit(): void {
-  //empty
-  }
-
   choice = this.bookService.b;
 
   emailFormControl = this.bookService.emailFormControl;
 
   nameFormControl = this.bookService.nameFormControl;
+
+  constructor(public http: HttpService, public bookService: DataService) {
+    // empty
+  }
+
+  ngOnInit(): void {
+  // empty
+  }
 
   getBooks(): void {
     this.bookService.getBooks();

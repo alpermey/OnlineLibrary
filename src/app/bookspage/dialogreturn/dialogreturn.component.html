@@ -6,7 +6,7 @@
 </div>
 
 <mat-selection-list #books [multiple]="false">
-    <mat-list-option (click)="removing(book.id)" *ngFor="let book of foundBooks;" [value]="book"
+    <mat-list-option *ngFor="let book of foundBooks;" (click)="removing(book.id)" [value]="book"
     (contextmenu)="adding(book.id)" > 
       {{book.book}} | {{book.amount}}
     </mat-list-option>

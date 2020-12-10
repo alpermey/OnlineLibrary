@@ -10,28 +10,28 @@ import {cloneDeep} from 'lodash';
 })
 export class DialogreturnComponent implements OnInit {
 
-  constructor(public http: HttpService,public bookService: DataService) { //empty
+  public foundBooks: Array<{book: string, amount: number, id: number}> = [];
+  email: string;
+  clonedArray = cloneDeep(this.foundBooks);
+
+  constructor(public http: HttpService, public bookService: DataService) { // empty
    }
 
   ngOnInit(): void {
-    //empty
+    // empty
   }
 
-  public foundBooks:Array<{book:string,amount:number,id:number}> = [];
-  email:string;
-  clonedArray = cloneDeep(this.foundBooks);
-
-  giveBooks(arr:Array<{book: string;amount: number;id: number}>,email:string): void {
-    this.bookService.giveBooks(arr,email);
+  giveBooks(arr: Array<{book: string; amount: number; id: number}>, email: string): void {
+    this.bookService.giveBooks(arr, email);
   }
 
-  removing(id:number):void{
-    if (this.foundBooks[id].amount>0){
+  removing(id: number): void{
+    if (this.foundBooks[id].amount > 0){
       this.foundBooks[id].amount = this.foundBooks[id].amount - 1;
     }
   }
 
-  adding(id:number):boolean {
+  adding(id: number): boolean {
     const sum = this.clonedArray[id].amount;
     if (sum !== this.foundBooks[id].amount){
       this.foundBooks[id].amount = this.foundBooks[id].amount + 1;
@@ -39,7 +39,7 @@ export class DialogreturnComponent implements OnInit {
     return false;
   }
 
-  findBooks(email:string):void
+  findBooks(email: string): void
   {
     this.foundBooks = this.bookService.findBooks(email);
     this.clonedArray = cloneDeep(this.foundBooks);

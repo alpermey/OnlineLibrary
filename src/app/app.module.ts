@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,13 +10,26 @@ import { AboutpageComponent } from './aboutpage/aboutpage.component';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import {MatInputModule} from '@angular/material/input';
 import { HomepageComponent } from './homepage/homepage.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookspageComponent } from './bookspage/bookspage.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { DialogComponent } from './bookspage/dialog/dialog.component';
+import { DialogemailComponent } from './bookspage/dialogemail/dialogemail.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DialogmessageComponent } from './bookspage/dialogmessage/dialogmessage.component';
+import { DialogerrorComponent } from './bookspage/dialogerror/dialogerror.component';
+import { DialogreturnComponent } from './bookspage/dialogreturn/dialogreturn.component';
+import { DataService } from 'src/service/data.service';
+import { HttpService } from 'src/service/http.service';
+
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -29,7 +43,11 @@ const routes: Routes = [
     AboutpageComponent,
     HomepageComponent,
     BookspageComponent,
-    DialogComponent
+    DialogComponent,
+    DialogemailComponent,
+    DialogmessageComponent,
+    DialogerrorComponent,
+    DialogreturnComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +61,40 @@ const routes: Routes = [
     MatGridListModule,
     MatListModule,
     MatDialogModule,
+    MatInputModule,
+    // MatDialog,
+    // MatDialogRef,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
-  entryComponents: [DialogComponent],
-  providers: [],
+  exports: [
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+],
+  entryComponents: [DialogComponent, DialogemailComponent, DialogerrorComponent, DialogmessageComponent, DialogreturnComponent],
+  providers: [DataService, HttpService, HttpClientModule, MatDialog, HttpClientModule,
+    {
+    provide: MatDialogRef,
+    useValue: {}
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

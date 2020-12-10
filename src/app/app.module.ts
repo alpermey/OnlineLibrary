@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,7 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookspageComponent } from './bookspage/bookspage.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
-import {MatDialogModule,MatDialog,MatDialogRef} from '@angular/material/dialog';
+import {MatDialogModule, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { DialogComponent } from './bookspage/dialog/dialog.component';
 import { DialogemailComponent } from './bookspage/dialogemail/dialogemail.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -95,8 +96,8 @@ const routes: Routes = [
     MatInputModule,
     MatRippleModule,
 ],
-  entryComponents: [DialogComponent,DialogemailComponent,DialogerrorComponent,DialogmessageComponent,DialogreturnComponent],
-  providers: [DataService,HttpService,HttpClientModule,MatDialog,HttpClientModule,
+  entryComponents: [DialogComponent, DialogemailComponent, DialogerrorComponent, DialogmessageComponent, DialogreturnComponent],
+  providers: [DataService, HttpService, HttpClientModule, MatDialog, HttpClientModule,
     {
     provide: MatDialogRef,
     useValue: {}

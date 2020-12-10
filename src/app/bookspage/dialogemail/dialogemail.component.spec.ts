@@ -9,7 +9,7 @@ describe('DialogemailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule,MatDialogModule],
+      imports: [HttpClientModule, MatDialogModule],
       declarations: [ DialogemailComponent ]
     })
     .compileComponents();

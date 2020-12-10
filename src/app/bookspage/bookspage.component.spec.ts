@@ -9,7 +9,7 @@ describe('BookspageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule,MatDialogModule],
+      imports: [HttpClientModule, MatDialogModule],
       declarations: [ BookspageComponent ]
     })
     .compileComponents();

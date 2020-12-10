@@ -9,7 +9,7 @@ describe('DialogreturnComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule,MatDialogModule],
+      imports: [HttpClientModule, MatDialogModule],
       declarations: [ DialogreturnComponent ]
     })
     .compileComponents();

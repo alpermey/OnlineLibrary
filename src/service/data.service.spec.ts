@@ -8,7 +8,7 @@ describe('DataService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [HttpClientModule,MatDialogModule],
+    imports: [HttpClientModule, MatDialogModule],
   });
     service = TestBed.inject(DataService);
   });

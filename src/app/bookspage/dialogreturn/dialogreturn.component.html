@@ -1,6 +1,6 @@
 <div>
     <h1>Thank you for renting our books!</h1>
-    <h4>Please write your email and add which books you are giving back</h4>
+    <h4>Please write your email and add which books you gave us back in one of our centers.</h4>
     <input matInput placeholder="Email" [(ngModel)]="email">
     <button (click)="findBooks(email)">Find books</button>
 </div>
@@ -13,5 +13,5 @@
 </mat-selection-list>
 
 <div>
-  <button (click)="giveBooks()">Give books</button>
+  <button (click)="giveBooks(foundBooks,email)">Give books</button>
 </div>

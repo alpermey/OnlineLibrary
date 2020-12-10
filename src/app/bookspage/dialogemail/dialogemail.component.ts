@@ -16,7 +16,7 @@ export class DialogemailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.http.test);
+  //empty
   }
 
   choice = this.bookService.b;

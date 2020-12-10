@@ -21,8 +21,8 @@ export class DialogreturnComponent implements OnInit {
   email:string;
   clonedArray = cloneDeep(this.foundBooks);
 
-  giveBooks(): void {
-    console.log;
+  giveBooks(arr:Array<{book: string;amount: number;id: number}>,email:string): void {
+    this.bookService.giveBooks(arr,email);
   }
 
   removing(id:number):void{
@@ -43,6 +43,8 @@ export class DialogreturnComponent implements OnInit {
   {
     this.foundBooks = this.bookService.findBooks(email);
     this.clonedArray = cloneDeep(this.foundBooks);
+    console.log(this.foundBooks);
+    console.log(this.clonedArray);
   }
 
 }

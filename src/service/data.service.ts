@@ -6,14 +6,14 @@ import { Book } from 'src/book.component';
 import {cloneDeep} from 'lodash';
 import { DialogComponent } from 'src/app/bookspage/dialog/dialog.component';
 import { DialogemailComponent } from 'src/app/bookspage/dialogemail/dialogemail.component';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { HttpService } from './http.service';
 import { DialogmessageComponent } from 'src/app/bookspage/dialogmessage/dialogmessage.component';
 import { DialogerrorComponent } from 'src/app/bookspage/dialogerror/dialogerror.component';
 import { DialogreturnComponent } from 'src/app/bookspage/dialogreturn/dialogreturn.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class DataService {
 
@@ -27,7 +27,7 @@ export class DataService {
     //empty
   }
 
-  MyArrayType:Array<{email: string, book: string, amount: number}> = [];
+  MyArrayType:Array<{email: string, book: string, amount: number,id:number}> = [];
 
   public emailFormControl = new FormControl("", []);
     
@@ -42,12 +42,13 @@ export class DataService {
           if(name === this.MyArrayType[index].book){
             this.MyArrayType[index].amount = number;
             if(number === 0){
-              this.MyArrayType.splice(index,1);
+              this.MyArrayType.splice(index,1,{email:"deleted",book:"",amount:0,id:-1});
             }
           }
         }
       }
     }
+    this.dialog.closeAll();
   }
 
   createUser(email:string): void {
@@ -55,12 +56,12 @@ export class DataService {
       this.MyArrayType.push({
         email: email,
         book:this.c[i].name,
-        amount:this.calculate(this.getSortBookName(this.c[i].name))
+        amount:this.calculate(this.getSortBookName(this.c[i].name)),
+        id:this.c[i].id
       })
     }
-    for(let i = 0; i < this.c.length;i++){
-      console.log(this.MyArrayType[i]);
-    }
+    this.amountOfusers++;
+    console.log(this.amountOfusers);
   }
 
   getSortBookName(nameofBook:string):Array<{name: string;author: string;amount: number;id: number;chosenNumber: number;}>
@@ -81,25 +82,17 @@ export class DataService {
 
   findBooks(email:string): Array<{book:string,amount:number,id:number}> {
     const foundBooks:Array<{book:string,amount:number,id:number}> = [];
-
-    const MyArrayType:Array<{email: string, book: string, amount: number,id:number}> = 
-    [{email:"a@a",book:"a",amount:3,id:0},{email:"a@a",book:"c",amount:2,id:1}];
-
-    // const resultArray = this.MyArrayType.filter(obj => {
-    //   return obj.email === email;
-    // })
-
-    const resultArray = MyArrayType.filter(obj => {
-        return obj.email === email;
-      })
+    const resultArray = this.MyArrayType.filter(obj => {
+      return obj.email === email;
+    })
 
     for (let index = 0; index < resultArray.length; index++) {
       foundBooks.push({
         book:resultArray[index].book,
         amount:resultArray[index].amount,
-        id:resultArray[index].id})
+        id:resultArray[index].id
+      })
     }
-    console.log("FindBooks worked");
     return foundBooks;
   }
 
@@ -122,8 +115,6 @@ export class DataService {
     this.clearChosenBooks();
     this.clonedArray = cloneDeep(this.b);
     this.dialog.closeAll();
-    this.amountOfusers++;
-    console.log(this.MyArrayType);
     },
     err => {
     console.log(err);
@@ -159,7 +150,6 @@ export class DataService {
 
   onRightClick(id: number): boolean {
     const sum = this.clonedArray[id].amount;
-    console.log(sum);
     if (sum !== this.b[id].amount){
       this.b[id].amount = this.b[id].amount + 1;
       this.b[id].chosenNumber = this.b[id].chosenNumber - 1;
@@ -169,10 +159,8 @@ export class DataService {
 
   choose(id: number): void {
     if (this.b[id].amount > 0){
-      console.log(this.b[id].amount);
       this.b[id].amount = this.b[id].amount - 1;
       this.b[id].chosenNumber = this.b[id].chosenNumber + 1;
-      console.log(this.b[id].amount);
     } else {
       this.openDialog();
     }
@@ -186,10 +174,6 @@ export class DataService {
   openEmailDialog(): void {
     this.dialog.open(DialogemailComponent);
     this.getChosenBooks();
-    console.log("Chosen books:");
-    for (let index = 0; index < this.c.length; index++) {
-      console.log(this.c[index]);
-    }
   }
 
   openReturnDialog(): void {

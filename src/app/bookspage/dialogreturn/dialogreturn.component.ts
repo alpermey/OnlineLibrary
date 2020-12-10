@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/service/data.service';
 import { HttpService } from 'src/service/http.service';
+import {cloneDeep} from 'lodash';
 
 @Component({
   selector: 'app-dialogreturn',
@@ -16,21 +17,32 @@ export class DialogreturnComponent implements OnInit {
     //empty
   }
 
-  b = this.bookService.findBooks;
+  public foundBooks:Array<{book:string,amount:number,id:number}> = [];
+  email:string;
+  clonedArray = cloneDeep(this.foundBooks);
 
-  email="";
-
-  add():void{
-    console.log("Add function worked");
+  giveBooks(): void {
+    console.log;
   }
 
-  delete():void {
-    console.log("Delete function worked");
+  removing(id:number):void{
+    if (this.foundBooks[id].amount>0){
+      this.foundBooks[id].amount = this.foundBooks[id].amount - 1;
+    }
   }
 
-  findBooks(e:string):void
+  adding(id:number):boolean {
+    const sum = this.clonedArray[id].amount;
+    if (sum !== this.foundBooks[id].amount){
+      this.foundBooks[id].amount = this.foundBooks[id].amount + 1;
+    }
+    return false;
+  }
+
+  findBooks(email:string):void
   {
-    this.bookService.findBooks(e);
+    this.foundBooks = this.bookService.findBooks(email);
+    this.clonedArray = cloneDeep(this.foundBooks);
   }
 
 }

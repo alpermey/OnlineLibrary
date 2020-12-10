@@ -28,15 +28,29 @@ export class DataService {
   }
 
   MyArrayType:Array<{email: string, book: string, amount: number}> = [];
-  foundBooks:Array<{book:string,amount:number}> = [];
- 
 
   public emailFormControl = new FormControl("", []);
     
   public nameFormControl = new FormControl("", []);
 
-  createUser(email:string): void {
+  giveBooks(arr:Array<{book: string;amount: number;id: number;}>, email:string):void {
+    for(let i = 0; i < arr.length;i++){
+      const name = arr[i].book;
+      const number = arr[i].amount;
+      for (let index = 0; index < this.MyArrayType.length; index++) {
+        if(email === this.MyArrayType[index].email){
+          if(name === this.MyArrayType[index].book){
+            this.MyArrayType[index].amount = number;
+            if(number === 0){
+              this.MyArrayType.splice(index,1);
+            }
+          }
+        }
+      }
+    }
+  }
 
+  createUser(email:string): void {
     for(let i = 0; i < this.c.length;i++){
       this.MyArrayType.push({
         email: email,
@@ -65,17 +79,25 @@ export class DataService {
   }
 
 
-  findBooks(email:string): Array<{book:string,amount:number}> {
-    const foundBooks:Array<{book:string,amount:number}> = [];
+  findBooks(email:string): Array<{book:string,amount:number,id:number}> {
+    const foundBooks:Array<{book:string,amount:number,id:number}> = [];
 
-    const resultArray = this.MyArrayType.filter(obj => {
-      return obj.email === email;
-    })
+    const MyArrayType:Array<{email: string, book: string, amount: number,id:number}> = 
+    [{email:"a@a",book:"a",amount:3,id:0},{email:"a@a",book:"c",amount:2,id:1}];
+
+    // const resultArray = this.MyArrayType.filter(obj => {
+    //   return obj.email === email;
+    // })
+
+    const resultArray = MyArrayType.filter(obj => {
+        return obj.email === email;
+      })
 
     for (let index = 0; index < resultArray.length; index++) {
       foundBooks.push({
         book:resultArray[index].book,
-        amount:resultArray[index].amount})
+        amount:resultArray[index].amount,
+        id:resultArray[index].id})
     }
     console.log("FindBooks worked");
     return foundBooks;

@@ -6,8 +6,12 @@
 </div>
 
 <mat-selection-list #books [multiple]="false">
-    <mat-list-option (click)="add()" *ngFor="let book of b;" [value]="book"
-    (contextmenu)="delete()" > 
-      {{book.name}} | {{book.amount}}
+    <mat-list-option (click)="removing(book.id)" *ngFor="let book of foundBooks;" [value]="book"
+    (contextmenu)="adding(book.id)" > 
+      {{book.book}} | {{book.amount}}
     </mat-list-option>
 </mat-selection-list>
+
+<div>
+  <button (click)="giveBooks()">Give books</button>
+</div>

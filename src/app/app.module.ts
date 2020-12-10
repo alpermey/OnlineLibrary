@@ -9,12 +9,13 @@ import { AboutpageComponent } from './aboutpage/aboutpage.component';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import {MatInputModule} from '@angular/material/input';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookspageComponent } from './bookspage/bookspage.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule,MatDialog,MatDialogRef} from '@angular/material/dialog';
 import { DialogComponent } from './bookspage/dialog/dialog.component';
 import { DialogemailComponent } from './bookspage/dialogemail/dialogemail.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +26,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DialogmessageComponent } from './bookspage/dialogmessage/dialogmessage.component';
 import { DialogerrorComponent } from './bookspage/dialogerror/dialogerror.component';
 import { DialogreturnComponent } from './bookspage/dialogreturn/dialogreturn.component';
+import { DataService } from 'src/service/data.service';
+import { HttpService } from 'src/service/http.service';
+import { MatRippleModule } from '@angular/material/core/ripple';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -56,15 +60,47 @@ const routes: Routes = [
     MatGridListModule,
     MatListModule,
     MatDialogModule,
+    MatInputModule,
+    MatDialog,
+    MatDialogRef,
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    DialogComponent,
+    DialogemailComponent,
+    DialogerrorComponent,
+    DialogmessageComponent,
+    DialogreturnComponent,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
-  entryComponents: [DialogComponent],
-  providers: [],
+  exports: [
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+],
+  entryComponents: [DialogComponent,DialogemailComponent,DialogerrorComponent,DialogmessageComponent,DialogreturnComponent],
+  providers: [DataService,HttpService,HttpClientModule,MatDialog,HttpClientModule,
+    {
+    provide: MatDialogRef,
+    useValue: {}
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

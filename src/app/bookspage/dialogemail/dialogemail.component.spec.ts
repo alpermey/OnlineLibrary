@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogemailComponent } from './dialogemail.component';
 
 describe('DialogemailComponent', () => {
@@ -8,6 +9,7 @@ describe('DialogemailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule,MatDialogModule],
       declarations: [ DialogemailComponent ]
     })
     .compileComponents();

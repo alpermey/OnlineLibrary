@@ -26,9 +26,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DialogmessageComponent } from './bookspage/dialogmessage/dialogmessage.component';
 import { DialogerrorComponent } from './bookspage/dialogerror/dialogerror.component';
-import { DialogreturnComponent } from './bookspage/dialogreturn/dialogreturn.component';
 import { DataService } from 'src/service/data.service';
 import { HttpService } from 'src/service/http.service';
+import { DialogreturnComponent } from './bookspage/dialogreturn/dialogreturn.component';
 
 
 const routes: Routes = [
@@ -62,8 +62,6 @@ const routes: Routes = [
     MatListModule,
     MatDialogModule,
     MatInputModule,
-    // MatDialog,
-    // MatDialogRef,
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,

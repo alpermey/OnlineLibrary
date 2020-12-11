@@ -1,8 +1,88 @@
+body {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
 .mat-grid-tile {
   background: lightblue;
 }
 
-.example-button-row button,
-.example-button-row a {
+.button-row button,
+.button-row a {
   margin-right: 8px;
+  margin-top: 5px;
+}
+
+.button-row1 button,
+.button-row a {
+  margin-right: 8px;
+  margin-top: 40px;
+}
+
+.mat-list-option {
+  color: rgb(0, 0, 0);
+  font-size: 150%;
+  text-align: center;
+  position: relative;
+  top: 40px;
+}
+
+.s1 {
+  width: 6%;
+  height: 8%;
+  position: relative;
+  top: 200px;
+  left: 200px;
+}
+
+.s2 {
+  width: 4%;
+  height: 6%;
+  position: relative;
+  top: 180px;
+  left: 400px;
+}
+
+.s3 {
+  width: 4%;
+  height: 6%;
+  position: relative;
+  top: 180px;
+  left: 600px;
+}
+
+.s4 {
+  width: 4%;
+  height: 6%;
+  position: relative;
+  top: 180px;
+  left: 800px;
+}
+
+.ship {
+  font-size: 15px;
+  position: relative;
+  top: 180px;
+  left: 130px;
+}
+
+.cash {
+  font-size: 15px;
+  position: relative;
+  top: 150px;
+  left: 460px;
+}
+
+.like {
+  font-size: 15px;
+  position: relative;
+  top: 118px;
+  left: 690px;
+}
+
+.lock {
+  font-size: 15px;
+  position: relative;
+  top: 90px;
+  left: 950px;
 }
